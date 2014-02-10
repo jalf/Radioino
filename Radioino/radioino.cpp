@@ -3,6 +3,9 @@
 
 Radioino::Radioino(String address, byte inputPins[], byte outputPins[], byte analogInputPins[])
 {
+	_activityLedPin = RADIOINO_ACTIVIY_LED_PIN;
+	_setupButtonPin = RADIOINO_SETUP_BUTTON_PIN;
+	_setupMode = false;	
 	_address = address;
 	_startHeader = "R"+address;
 
@@ -30,8 +33,28 @@ Radioino::Radioino(String address, byte inputPins[], byte outputPins[], byte ana
   setupPins();
 }
 
+void Radioino::loop()
+{
+	if (digitalRead(_setupButtonPin)==HIGH)
+	{	
+		_setupMode = true;
+	}
+	if (_setupMode)
+	{
+		digitalWrite(RADIOINO_ACTIVIY_LED_PIN,HIGH);
+	}
+}
+
+// Set the pin with the activity led. -1 for none.
+void Radioino::setActiviyLedPin(byte pin)
+{
+	_activityLedPin = pin;
+	if (pin != -1)
+		pinMode(_activityLedPin,OUTPUT);
+}
+
 // Write a HIGH or a LOW value to an digital pin.
-void Radioino::Write(byte pin, boolean value)
+void Radioino::write(byte pin, boolean value)
 {
 	// Check if the pin is an output pin
 	for (int i=0; i<_outputPinsCount;i++)
@@ -45,9 +68,8 @@ void Radioino::Write(byte pin, boolean value)
 	}
 }
 
-
 // Read a HIGH or a LOW value from an digital pin.
-boolean Radioino::Read(byte pin)
+boolean Radioino::read(byte pin)
 {
 	// Check if the pin is an output pin
 	for (int i=0; i<_outputPinsCount;i++)
@@ -81,7 +103,9 @@ void Radioino::setupPins()
 	}  
 
 	//set the activity pin
-	pinMode(RADIOINO_ACTIVIY_LED_PIN,OUTPUT);
+	pinMode(_activityLedPin,OUTPUT);
+	//set the setup button pin
+	pinMode(RADIOINO_SETUP_BUTTON_PIN,INPUT);
 }
 
 void Radioino::waitCommand()
@@ -103,7 +127,8 @@ boolean Radioino::receive()
 		if (_command.startsWith(_startHeader))
 		{
 			// show activity
-			digitalWrite(RADIOINO_ACTIVIY_LED_PIN,HIGH);		
+			if (_activityLedPin != -1)
+				digitalWrite(_activityLedPin,HIGH);		
 			return true;
 		}
 		waitCommand();
@@ -130,21 +155,21 @@ boolean Radioino::execute()
 			_commandCharIndex++;          
 			// Get the param
 			inByte = getNextInt();        
-			Write(inByte,HIGH);      
+			write(inByte,HIGH);      
 			break;
 		case 'L'  :    // De-activate a digital output
 			_commandCharIndex++;
 			// Get the param
 			inByte = getNextInt();        
-			Write(inByte,LOW);
+			write(inByte,LOW);
 			break;
 		case 'X'  :    // invert a digital output
 			_commandCharIndex++;
 			// Get the param
 			inByte = getNextInt();        
-			if (Read(inByte)==LOW)
-				Write(inByte,HIGH);
-			else Write(inByte,LOW);
+			if (read(inByte)==LOW)
+				write(inByte,HIGH);
+			else write(inByte,LOW);
 			break;
 		case 'T'  :		// Play the module Tone
 			_commandCharIndex++;
@@ -170,13 +195,15 @@ void Radioino::endResponse()
 {
 	Serial.println(RADIOINO_COMMAND_END);
 	// End the activity
-	digitalWrite(RADIOINO_ACTIVIY_LED_PIN,LOW);
+	if (_activityLedPin != -1)
+		digitalWrite(_activityLedPin,LOW);
 }
 
 void Radioino::beginResponse(boolean result)
 {
-	// start activity	
-	digitalWrite(RADIOINO_ACTIVIY_LED_PIN,HIGH);
+	// start activity
+	if (_activityLedPin != -1)	
+		digitalWrite(_activityLedPin,HIGH);
 	
 	// Header
 	Serial.print("ADR");
@@ -207,22 +234,22 @@ int Radioino::getNextInt()
 
 void Radioino::sendSensorsStatus()
 {
-	Serial.print("PIN");
 	send(getInputSensorsStatus());
 }
 
 String Radioino::getInputSensorsStatus()
 {
-	String result ="";
+	String result ="IND";
 	int value;
 
 	// Add the input digital pins
 	for (int i=0;i<_inputPinsCount;i++)
 	{
-		value = Read(_inputPins[i]);
+		value = read(_inputPins[i]);
 		result = result + _inputPins[i] + ";"+value+";";
 	}  
 	// Add the output digital pins
+	result = result += "|OUD";
 	for (int i=0;i<_outputPinsCount;i++)
 	{
 		value = _outputPins[i].state;
@@ -230,7 +257,7 @@ String Radioino::getInputSensorsStatus()
 	}  
 
 	// Add the analogic pins
-	result = result + "~";
+	result = result + "|INA";
 	for (int i=0;i<_analogInputPinsCount;i++)
 	{
 		value = analogRead(_analogInputPins[i]);

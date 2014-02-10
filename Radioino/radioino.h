@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "arduino.h"
 
 #define RADIOINO_ACTIVIY_LED_PIN	13
+#define RADIOINO_SETUP_BUTTON_PIN	2	
 #define RADIOINO_COMMAND_END		'*'
 #define RADIOINO_SECTION			'|'
 
@@ -45,10 +46,15 @@ class Radioino
 		void send(String data);
 		void sendSensorsStatus();		
 		boolean execute();
+		void loop();
+		void setActiviyLedPin(byte pin);
 				
-		void Write(byte pin, boolean value);
-		boolean Read(byte pin);
+		void write(byte pin, boolean value);
+		boolean read(byte pin);
 	private:
+		boolean _setupMode;
+		byte _activityLedPin;	// Led for activity
+		byte _setupButtonPin;	// Pin with the setup button
 		byte *_inputPins;  // Digital INPUT pins
 		PinState *_outputPins;  // Digital OUTPUT pins
 		byte *_analogInputPins;  // Analogic INPUT pins

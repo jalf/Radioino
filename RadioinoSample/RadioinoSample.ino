@@ -1,7 +1,7 @@
 #include <radioino.h>
 
 byte inputPins[] = {4,9,10,11,12};  // Digital INPUT pins (first byte is the ports count)
-byte outputPins[] = {7,2,3,4,5,6,8,13};  // Digital OUTPUT pins (first byte is the ports count)
+byte outputPins[] = {6,3,4,5,6,8,13};  // Digital OUTPUT pins (first byte is the ports count)
 byte analogInputPins[] = {4,0,1,2,3 };  // Analogic INPUT pins (first byte is the ports count)
 
 // Initialize the module
@@ -22,6 +22,8 @@ void setup()
 
 void loop()
 {
+  module.loop();
+  
   if (Serial.available() > 0) {
     if (module.receive()) {
       if (module.execute())

@@ -18,12 +18,15 @@ R0003H2L1*
 
 
 Respostas:
-ADR[AAAA]|ACK[ACKCODE]|PIN[PINSTATUS]|[CUSTOM]|*
+ADR[AAAA]|ACK[ACKCODE]|{OUD|IND|INA}[PINSTATUS]|[CUSTOM]|*
 
 Onde:
 	AAAA - Endereço do módulo que respondeu
+	OUD - Sequencia de valores dos pinos de output
+	IND - Sequencia de valores dos pinos de input
+	INA - Sequencia de valores dos pinos de input analógico
+	PINSTATUS - Uma sequencia de pares [PINO;VALOR]. 
 	ACKCODE - Código da resposta: ACKOK ou ACKERROR
-	PINSTATUS - Uma sequencia de pares [PINO;VALOR]. Um separador '~' separa os resultados digitiais dos analógicos
 
 Exemplo:
 ADR0001|ACKOK|PIN9;0;10;1;11;0;12;0;13;0;~0;525;1;673;2;794;3;700;|PIRH|*
