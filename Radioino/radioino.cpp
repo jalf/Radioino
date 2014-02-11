@@ -104,6 +104,8 @@ byte Radioino::receiveCommand()
 			}
 		}	
 	}
+	// end activity
+	setActivityLedState(LOW);  
 	
 	return _commandResult;
 }
@@ -194,30 +196,30 @@ void Radioino::setActivityLedState(bool state)
 // Build the incoming command in a ascii-string
 boolean Radioino::receive()
 {
-  while (Serial.available() > 0)
-  {    
-    int value = Serial.read();
-	// show activity
-	setActivityLedState(!_activityLedState);
-    switch (value)
-    {
-      case RADIOINO_COMMAND_END	:
-		// Command arrived. Check if we can accept this command command address
-		if (_command.startsWith(_startHeader) || _command.startsWith(RADIOINO_SETUP_HEADER) && _setupMode)
-		{			
-			return true;
+	while (Serial.available() > 0)
+	{    
+		int value = Serial.read();
+		// show activity
+		setActivityLedState(!_activityLedState);
+		switch (value)
+		{
+			case RADIOINO_COMMAND_END	:
+				// Command arrived. Check if we can accept this command command address
+				if (_command.startsWith(_startHeader) || _command.startsWith(RADIOINO_SETUP_HEADER) && _setupMode)
+				{			
+					return true;
+				}
+				waitCommand();
+				return false;
+			case 'R'  :
+				waitCommand();
+				_command = _command + char(value);
+				return false;
+			default:
+				_command = _command + char(value);
+				return false;
 		}
-		waitCommand();
-        return false;
-      case 'R'  :
-        waitCommand();
-		_command = _command + char(value);
-		return false;
-      default:
-        _command = _command + char(value);
-		return false;
-    }
-  }    
+	}  	
 }
 
 boolean Radioino::execute()
@@ -289,15 +291,10 @@ void Radioino::send(String data)
 void Radioino::sendResponse()
 {
 	Serial.println(RADIOINO_COMMAND_END);
-	// End the activity
-	setActivityLedState(LOW);
 }
 
 void Radioino::beginResponse(boolean result)
 {
-	// start activity
-	setActivityLedState(HIGH);
-	
 	// Header
 	Serial.print("ADR");
 	Serial.print(_address);
