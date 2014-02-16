@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define RADIOINO_SETUP_LED_BLINK_MS	300	
 #define RADIOINO_SETUP_ATTEMPTS		100	
 #define RADIOINO_SETUP_HEADER		"R----"
-#define RADIOINO_COMMAND_END		'*'
+#define RADIOINO_COMMAND_END		'\n'
 #define RADIOINO_SECTION			'|'
 #define RADIOINO_COMMAND_OK			1
 #define RADIOINO_COMMAND_ERROR		2

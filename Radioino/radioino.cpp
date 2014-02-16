@@ -291,7 +291,6 @@ void Radioino::send(String data)
 
 void Radioino::sendResponse()
 {
-	_response+=RADIOINO_COMMAND_END;
 	Serial.println(_response);
 }
 
