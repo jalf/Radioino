@@ -1,5 +1,20 @@
-#include <radioino.h>
+/*  Radioino Sample
+ 
+ An example of using the Radioino board to receive data from the 
+ computer.  In this case, the boards turns all pins states and
+ some custom reusult.
+ 
+ The data can be sent from the Arduino serial monitor, or another
+ program like Processing (see code below), Flash (via a serial-net
+ proxy), PD, or Max/MSP.
+ 
+ This example code is in the public domain.
+ 
+ https://github.com/jalf/Radioino
 
+*/
+
+#include <radioino.h>
 
 byte inputPins[] = {4,9,10,11,12};  // Digital INPUT pins (first byte is the ports count)
 byte outputPins[] = {6,3,4,5,6,8,13};  // Digital OUTPUT pins (first byte is the ports count)

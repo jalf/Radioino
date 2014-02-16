@@ -72,6 +72,7 @@ class Radioino
 		String _address;  // Module address
 		String _startHeader; // Module address in message header
 		
+		String _response;	// response string
 		String _command;  // Incoming command
 		String _value; // Command parameter
 		int _commandCharIndex;  // Actual command token

@@ -29,6 +29,7 @@ Radioino::Radioino(byte inputPins[], byte outputPins[], byte analogInputPins[])
 	
   // Alloc strings
   _command.reserve(50);
+  _response.reserve(255);
   _value.reserve(3);
 
   // Set the pin configuration
@@ -284,33 +285,32 @@ boolean Radioino::execute()
 
 void Radioino::send(String data)
 {
-	Serial.print(data);
-	Serial.print(RADIOINO_SECTION);
+	_response+=data;
+	_response+=RADIOINO_SECTION;	
 }
 
 void Radioino::sendResponse()
 {
-	Serial.println(RADIOINO_COMMAND_END);
+	_response+=RADIOINO_COMMAND_END;
+	Serial.println(_response);
 }
 
 void Radioino::beginResponse(boolean result)
 {
 	// Header
-	Serial.print("ADR");
-	Serial.print(_address);
-	Serial.print(RADIOINO_SECTION);
-	Serial.print("ACK");
+	_response="ADR";
+	_response+=_address;
+	_response+=RADIOINO_SECTION;
+	_response+="ACK";
 	
 	if (!result)
 	{
-		Serial.print("ERROR");		
-		Serial.print(RADIOINO_SECTION);
+		_response+="ERROR";		
 	}
 	else {
-		Serial.print("OK");
-		Serial.print(RADIOINO_SECTION);
+		_response+="OK";		
 	}
-	
+	_response+=RADIOINO_SECTION;
 }
 
 int Radioino::getNextInt()
