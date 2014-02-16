@@ -208,6 +208,14 @@ boolean Radioino::receive()
 				// Command arrived. Check if we can accept this command command address
 				if (_command.startsWith(_startHeader) || _command.startsWith(RADIOINO_SETUP_HEADER) && _setupMode)
 				{			
+					// Check if is not message to send the latest result again
+					if (_command == _startHeader+"C")
+					{
+						// Send the latest response again
+						Serial.println(_response);
+						return false;
+					}
+					// It's a regular command. execute-it
 					return true;
 				}
 				waitCommand();
@@ -291,6 +299,7 @@ void Radioino::send(String data)
 
 void Radioino::sendResponse()
 {
+	_response += ("CRC" + getCheckSum(_response));
 	Serial.println(_response);
 }
 
@@ -364,4 +373,18 @@ void Radioino::toneNotify(int pin)
   tone(pin,494,50); //SI
   delay(80);
   tone(pin,700,100); 
+}
+
+// Calculates the checksum for a given string
+// returns as string
+String Radioino::getCheckSum(String value) {
+	int i;
+	int XOR;
+	int c;
+	// Calculate checksum ignoring any $'s in the string
+	for (XOR = 0, i = 0; i < value.length(); i++) {
+		c = (unsigned char)value[i];
+		XOR ^= c;
+	}
+	return String(XOR,HEX);
 }

@@ -4,6 +4,7 @@ R[AAAA][COMAND]\n     - Todos os comandos terminam com um 'enter'
 
 AAAA - Endereço do módulo
 COMMAND - Comandos a serem executados
+	- C - Envia a última resposta de volta (para tratamento de erro
 	- H[PORT] - Ativa uma saida digital
 		Exemplo: H1 - Ativa a porta 1
 	- L[PORT] - Desliga uma saida digital
@@ -17,14 +18,15 @@ R0001\n
 R0003H2L1\n
 
 Respostas:
-ADR[AAAA]|ACK[ACKCODE]|{OUD|IND|INA}[PINSTATUS]|[CUSTOM]|\n
+ADR[AAAA]|ACK[ACKCODE]|{OUD|IND|INA}[PINSTATUS]|[CUSTOM]|CRC[CRCVALUE]\n
 
 Onde:
 	AAAA - Endereço do módulo que respondeu
 	OUD - Sequencia de valores dos pinos de output
 	IND - Sequencia de valores dos pinos de input
 	INA - Sequencia de valores dos pinos de input analógico
-	PINSTATUS - Uma sequencia de pares [PINO;VALOR]. 
+	PINSTATUS - Uma sequencia de pares [PINO;VALOR]
+	CRC - Checksum do resultdo
 	ACKCODE - Código da resposta: ACKOK ou ACKERROR
 
 Exemplo:
@@ -33,6 +35,6 @@ ADR0001|ACKOK|PIN9;0;10;1;11;0;12;0;13;0;~0;525;1;673;2;794;3;700;|PIRH|\n
 
 Para Programar um Módulo
 - Aperta o botão para entrar em configuração
-envia R----S[AAAA]* onde AAAA é o endereço do módulo
+envia R----S[AAAA]* onde AAAA vai ser o endereço do módulo
 Exemplo:
 R----S1234\n

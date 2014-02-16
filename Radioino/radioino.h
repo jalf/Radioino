@@ -91,6 +91,7 @@ class Radioino
 		void toneNotify(int pin);		
 		void sendHeader();
 		int getNextInt();
+		String getCheckSum(String value);
 };
 
 #endif
