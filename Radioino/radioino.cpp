@@ -103,7 +103,9 @@ byte Radioino::receiveCommand()
 				beginResponse(false);
 				_commandResult = RADIOINO_COMMAND_ERROR;
 			}
-		}	
+			// wait for another command
+			resetCommand();
+		}
 	}
 	// end activity
 	setActivityLedState(LOW);  
@@ -180,7 +182,7 @@ void Radioino::setupPins()
 	pinMode(RADIOINO_SETUP_BUTTON_PIN,INPUT);
 }
 
-void Radioino::waitCommand()
+void Radioino::resetCommand()
 {
 	_command = "";
 	_commandCharIndex = 0;	
@@ -213,22 +215,26 @@ boolean Radioino::receive()
 					{
 						// Send the latest response again
 						Serial.println(_response);
+						resetCommand();
 						return false;
 					}
 					// It's a regular command. execute-it
 					return true;
 				}
-				waitCommand();
-				return false;
+				else {
+					resetCommand();
+					return false;
+				}
 			case 'R'  :
-				waitCommand();
+				resetCommand();
 				_command = _command + char(value);
 				return false;
 			default:
 				_command = _command + char(value);
 				return false;
 		}
-	}  	
+	}
+	return false;
 }
 
 boolean Radioino::execute()

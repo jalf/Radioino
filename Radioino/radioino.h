@@ -87,7 +87,7 @@ class Radioino
 		void setupPins();
 		void setAddress(String address);
 		void loadAddress();
-		void waitCommand();
+		void resetCommand();
 		void toneNotify(int pin);		
 		void sendHeader();
 		int getNextInt();
