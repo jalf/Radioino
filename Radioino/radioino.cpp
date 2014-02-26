@@ -387,8 +387,9 @@ String Radioino::getCheckSum(String value) {
 	int i;
 	int XOR;
 	int c;
+	int valueSize = value.length();
 	// Calculate checksum ignoring any $'s in the string
-	for (XOR = 0, i = 0; i < value.length(); i++) {
+	for (XOR = 0, i = 0; i < valueSize; i++) {
 		c = (unsigned char)value[i];
 		XOR ^= c;
 	}
