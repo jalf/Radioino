@@ -548,8 +548,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 <rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
 </package>
 <package name="PUSHBUTTON">
-<pad name="P$2" x="2.2241375" y="-0.018128125" drill="0.8" rot="R90"/>
-<pad name="P$1" x="-3.22159375" y="0.01080625" drill="0.8" rot="R90"/>
+<pad name="P$2" x="2.8591375" y="-0.018128125" drill="1.2" diameter="2.1844" rot="R90"/>
+<pad name="P$1" x="-3.85659375" y="0.01080625" drill="1.2" diameter="2.1844" rot="R90"/>
 <wire x1="-3.5" y1="0" x2="-3.5" y2="1.5" width="0.127" layer="21"/>
 <wire x1="-3.5" y1="1.5" x2="2.5" y2="1.5" width="0.127" layer="21"/>
 <wire x1="2.5" y1="1.5" x2="2.5" y2="-1.5" width="0.127" layer="21"/>

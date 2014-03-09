@@ -1587,20 +1587,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </nets>
 </sheet>
 </sheets>
-<errors>
-<approved hash="108,1,25.4,73.66,GND,,,,,"/>
-<approved hash="108,1,-12.7,93.98,GND,,,,,"/>
-<approved hash="115,1,16.51,86.6817,ACK,,,,,"/>
-<approved hash="115,1,-69.2573,53.5347,JP1,,,,,"/>
-<approved hash="115,1,-81.9573,53.5347,JP2,,,,,"/>
-<approved hash="115,1,-81.9573,30.6747,JP3,,,,,"/>
-<approved hash="115,1,-69.2573,30.6747,JP4,,,,,"/>
-<approved hash="115,1,-56.5573,30.6747,JP5,,,,,"/>
-<approved hash="115,1,-94.6573,30.6747,JP6,,,,,"/>
-<approved hash="115,1,-94.6573,53.5347,JP7,,,,,"/>
-<approved hash="115,1,-51.4773,76.3947,-,,,,,"/>
-<approved hash="115,1,-76.8773,76.3947,+,,,,,"/>
-</errors>
 </schematic>
 </drawing>
 </eagle>

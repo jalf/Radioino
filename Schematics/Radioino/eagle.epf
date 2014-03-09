@@ -361,8 +361,8 @@ UsedLibrary="C:/Program Files (x86)/EAGLE-6.4.0/lbr/SparkFun/SparkFun-Sensors.lb
 
 [Win_1]
 Type="Control Panel"
-Loc="-1486 737 -887 1136"
-State=1
+Loc="889 569 1488 968"
+State=2
 Number=0
 
 [Desktop]

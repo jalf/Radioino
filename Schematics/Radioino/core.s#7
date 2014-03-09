@@ -843,11 +843,11 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="ARDUINO" gate="G$1" x="7.62" y="60.96"/>
 <instance part="GND3" gate="1" x="-7.62" y="101.6" rot="R180"/>
 <instance part="GND1" gate="1" x="25.4" y="76.2" rot="R180"/>
-<instance part="GND2" gate="1" x="-43.18" y="40.64"/>
-<instance part="SUPPLY1" gate="G$1" x="-35.56" y="40.64" rot="R180"/>
+<instance part="GND2" gate="1" x="-76.2" y="58.42"/>
+<instance part="SUPPLY1" gate="G$1" x="-58.42" y="60.96" rot="R180"/>
 <instance part="SUPPLY2" gate="G$1" x="20.32" y="68.58" rot="R270"/>
 <instance part="SUPPLY3" gate="G$1" x="-2.54" y="99.06"/>
-<instance part="5V" gate="G$1" x="-40.64" y="53.34" rot="R270"/>
+<instance part="5V" gate="G$1" x="-68.58" y="58.42" rot="R270"/>
 <instance part="RF" gate="A" x="-10.16" y="96.52" rot="R90"/>
 <instance part="U$2" gate="A" x="-30.48" y="58.42" rot="R180"/>
 <instance part="U$1" gate="G$1" x="48.26" y="53.34" rot="MR180"/>
@@ -868,7 +868,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <segment>
 <pinref part="5V" gate="G$1" pin="2"/>
 <pinref part="GND2" gate="1" pin="GND"/>
-<wire x1="-40.64" y1="55.88" x2="-43.18" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="-68.58" y1="60.96" x2="-76.2" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="-" gate="G$1" pin="1"/>
@@ -889,6 +889,9 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <pinref part="RF" gate="A" pin="4"/>
 <pinref part="GND3" gate="1" pin="GND"/>
 <wire x1="-7.62" y1="93.98" x2="-7.62" y2="99.06" width="0.1524" layer="91"/>
+<pinref part="ARDUINO" gate="G$1" pin="GND"/>
+<wire x1="-2.54" y1="68.58" x2="-7.62" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="-7.62" y1="68.58" x2="-7.62" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="5V" class="0">
@@ -899,7 +902,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <segment>
 <pinref part="5V" gate="G$1" pin="1"/>
 <pinref part="SUPPLY1" gate="G$1" pin="5V"/>
-<wire x1="-38.1" y1="55.88" x2="-35.56" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="-66.04" y1="60.96" x2="-58.42" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="+" gate="G$1" pin="4"/>

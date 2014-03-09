@@ -205,7 +205,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="0.635" y1="-1.27" x2="0" y2="-0.635" width="0.1524" layer="21"/>
 <pad name="VCC" x="-1.27" y="0" drill="1.016" shape="long" rot="R90"/>
 <pad name="GND" x="1.27" y="0" drill="1.016" shape="long" rot="R90"/>
-<text x="-0.428928125" y="-2.199596875" size="0.6096" layer="25" ratio="10">&gt;NAME</text>
+<text x="-0.708784375" y="-1.983665625" size="0.6096" layer="25" ratio="10">&gt;NAME</text>
 <rectangle x1="-1.524" y1="-0.254" x2="-1.016" y2="0.254" layer="51"/>
 <rectangle x1="1.016" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
 <text x="-3.81" y="-0.635" size="1.27" layer="21">+</text>
@@ -260,11 +260,11 @@ We've spent an enormous amount of time creating and checking these footprints an
 <rectangle x1="-2.794" y1="-0.254" x2="-2.286" y2="0.254" layer="51"/>
 <rectangle x1="-5.334" y1="-0.254" x2="-4.826" y2="0.254" layer="51"/>
 <rectangle x1="4.826" y1="-0.254" x2="5.334" y2="0.254" layer="51"/>
-<text x="-5.705959375" y="1.548165625" size="0.8128" layer="21">con</text>
-<text x="-3.31063125" y="1.62179375" size="0.8128" layer="21">TX</text>
+<text x="-6.075190625" y="1.585203125" size="0.8128" layer="21">con</text>
+<text x="-3.298325" y="1.547721875" size="0.8128" layer="21">TX</text>
 <text x="-0.64404375" y="1.5391" size="0.8128" layer="21" rot="SR0">RX</text>
-<text x="2.022546875" y="1.5391" size="0.8128" layer="21" rot="SR0">-</text>
-<text x="4.40883125" y="1.557225" size="0.8128" layer="21" rot="SR0">+</text>
+<text x="2.35485625" y="1.600828125" size="0.8128" layer="21" rot="SR0">-</text>
+<text x="4.72883125" y="1.44611875" size="0.8128" layer="21" rot="SR0">+</text>
 </package>
 <package name="1X08">
 <description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
@@ -547,6 +547,15 @@ We've spent an enormous amount of time creating and checking these footprints an
 <rectangle x1="2.286" y1="-0.254" x2="2.794" y2="0.254" layer="51"/>
 <rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
 </package>
+<package name="PUSHBUTTON">
+<pad name="P$2" x="-33.02845625" y="1.910046875" drill="0.8" rot="R90"/>
+<pad name="P$1" x="-35.546771875" y="1.885059375" drill="0.8" rot="R90"/>
+<wire x1="-37.5" y1="5" x2="-31" y2="5" width="0.127" layer="21"/>
+<wire x1="-31" y1="5" x2="-31" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="-31" y1="-1.5" x2="-37.5" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="-37.5" y1="-1.5" x2="-37.5" y2="-1" width="0.127" layer="21"/>
+<wire x1="-37.5" y1="-1" x2="-37.5" y2="5" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="PINHD2">
@@ -655,6 +664,16 @@ We've spent an enormous amount of time creating and checking these footprints an
 <pin name="2" x="5.08" y="0" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
 <pin name="3" x="5.08" y="2.54" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
 <pin name="4" x="5.08" y="5.08" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
+</symbol>
+<symbol name="PUSHBUTTON">
+<circle x="0" y="0" radius="2.54" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="5.08" x2="-5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-5.08" x2="5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-5.08" x2="5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="5.08" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
+<pin name="P$1" x="-7.62" y="0" visible="off" length="short" direction="in"/>
+<pin name="P$2" x="7.62" y="0" visible="off" length="short" direction="out" rot="R180"/>
+<text x="-4.064" y="6.096" size="1.778" layer="95">&gt;NAME</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -807,6 +826,22 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </device>
 </devices>
 </deviceset>
+<deviceset name="PUSHBUTTON">
+<gates>
+<gate name="G$1" symbol="PUSHBUTTON" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="PUSHBUTTON">
+<connects>
+<connect gate="G$1" pin="P$1" pad="P$1"/>
+<connect gate="G$1" pin="P$2" pad="P$2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </libraries>
@@ -834,6 +869,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="-" library="jalf" deviceset="M04" device="PTH"/>
 <part name="+" library="jalf" deviceset="M04" device="PTH"/>
+<part name="PROGRAM" library="jalf" deviceset="PUSHBUTTON" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -855,6 +891,7 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="GND4" gate="1" x="-45.72" y="83.82" rot="R180"/>
 <instance part="-" gate="G$1" x="-53.34" y="73.66"/>
 <instance part="+" gate="G$1" x="-78.74" y="73.66"/>
+<instance part="PROGRAM" gate="G$1" x="12.7" y="93.98"/>
 </instances>
 <busses>
 </busses>
@@ -1105,6 +1142,17 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <pinref part="U$2" gate="A" pin="7"/>
 <pinref part="ARDUINO" gate="G$1" pin="*3"/>
 <wire x1="-27.94" y1="63.5" x2="-2.54" y2="63.5" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$23" class="0">
+<segment>
+<pinref part="ARDUINO" gate="G$1" pin="2"/>
+<wire x1="-2.54" y1="66.04" x2="-15.24" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="66.04" x2="-15.24" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="83.82" x2="2.54" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="PROGRAM" gate="G$1" pin="P$1"/>
+<wire x1="2.54" y1="83.82" x2="5.08" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="5.08" y1="83.82" x2="5.08" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

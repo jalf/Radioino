@@ -461,18 +461,18 @@ We've spent an enormous amount of time creating and checking these footprints an
 <rectangle x1="-11.684" y1="-0.254" x2="-11.176" y2="0.254" layer="51"/>
 <rectangle x1="-14.224" y1="-0.254" x2="-13.716" y2="0.254" layer="51"/>
 <rectangle x1="13.716" y1="-0.254" x2="14.224" y2="0.254" layer="51"/>
-<text x="-14.464890625" y="-2.168203125" size="0.6096" layer="25" rot="SR0">A6</text>
-<text x="-11.97743125" y="-2.18575" size="0.6096" layer="25" rot="SR0">A7</text>
-<text x="-9.389390625" y="-2.218515625" size="0.6096" layer="25" rot="SR0">10</text>
-<text x="-6.814365625" y="-2.2360625" size="0.6096" layer="25" rot="SR0">11</text>
-<text x="-4.34441875" y="-2.20096875" size="0.6096" layer="25" rot="SR0">12</text>
-<text x="-1.839446875" y="-2.218515625" size="0.6096" layer="25" rot="SR0">13</text>
-<text x="0.753096875" y="-2.2360625" size="0.6096" layer="25" rot="SR0">A0</text>
-<text x="3.29309375" y="-2.2360625" size="0.6096" layer="25" rot="SR0">A1</text>
-<text x="5.763040625" y="-2.20096875" size="0.6096" layer="25" rot="SR0">A2</text>
-<text x="8.39060625" y="-2.253609375" size="0.6096" layer="25" rot="SR0">A3</text>
-<text x="10.98315" y="-2.2360625" size="0.6096" layer="25" rot="SR0">A4</text>
-<text x="13.47060625" y="-2.218515625" size="0.6096" layer="25" rot="SR0">A5</text>
+<text x="-14.464890625" y="-2.168203125" size="0.8128" layer="25" rot="SR0">A6</text>
+<text x="-11.97743125" y="-2.18575" size="0.8128" layer="25" rot="SR0">A7</text>
+<text x="-9.389390625" y="-2.218515625" size="0.8128" layer="25" rot="SR0">10</text>
+<text x="-6.814365625" y="-2.2360625" size="0.8128" layer="25" rot="SR0">11</text>
+<text x="-4.34441875" y="-2.20096875" size="0.8128" layer="25" rot="SR0">12</text>
+<text x="-1.839446875" y="-2.218515625" size="0.8128" layer="25" rot="SR0">13</text>
+<text x="0.753096875" y="-2.2360625" size="0.8128" layer="25" rot="SR0">A0</text>
+<text x="3.29309375" y="-2.2360625" size="0.8128" layer="25" rot="SR0">A1</text>
+<text x="5.763040625" y="-2.20096875" size="0.8128" layer="25" rot="SR0">A2</text>
+<text x="8.39060625" y="-2.253609375" size="0.8128" layer="25" rot="SR0">A3</text>
+<text x="10.98315" y="-2.2360625" size="0.8128" layer="25" rot="SR0">A4</text>
+<text x="13.47060625" y="-2.218515625" size="0.8128" layer="25" rot="SR0">A5</text>
 </package>
 <package name="ARDUINO_PRO_MINI">
 <wire x1="-8.89" y1="16.51" x2="-8.89" y2="-16.51" width="0.127" layer="51"/>

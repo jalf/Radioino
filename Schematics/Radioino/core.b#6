@@ -500,52 +500,6 @@
 </package>
 </packages>
 </library>
-<library name="SparkFun-Aesthetics">
-<description>&lt;h3&gt;SparkFun Electronics' preferred foot prints&lt;/h3&gt;
-In this library you'll find non-functional items- supply symbols, logos, notations, frame blocks, etc.&lt;br&gt;&lt;br&gt;
-We've spent an enormous amount of time creating and checking these footprints and parts, but it is the end user's responsibility to ensure correctness and suitablity for a given componet or application. If you enjoy using this library, please buy one of our products at www.sparkfun.com.
-&lt;br&gt;&lt;br&gt;
-&lt;b&gt;Licensing:&lt;/b&gt; CC v3.0 Share-Alike You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
-<packages>
-<package name="OSHW-LOGO-S">
-<polygon width="0.15" layer="21">
-<vertex x="0.3947" y="-0.9528" curve="9.498218"/>
-<vertex x="0.5465" y="-0.8746"/>
-<vertex x="0.9235" y="-1.182"/>
-<vertex x="1.182" y="-0.9235"/>
-<vertex x="0.8746" y="-0.5465" curve="19.000773"/>
-<vertex x="1.0049" y="-0.232"/>
-<vertex x="1.4888" y="-0.1828"/>
-<vertex x="1.4888" y="0.1828"/>
-<vertex x="1.0049" y="0.232" curve="19.000773"/>
-<vertex x="0.8746" y="0.5465"/>
-<vertex x="1.182" y="0.9235"/>
-<vertex x="0.9235" y="1.182"/>
-<vertex x="0.5465" y="0.8746" curve="19.000773"/>
-<vertex x="0.232" y="1.0049"/>
-<vertex x="0.1828" y="1.4888"/>
-<vertex x="-0.1828" y="1.4888"/>
-<vertex x="-0.232" y="1.0049" curve="19.000773"/>
-<vertex x="-0.5465" y="0.8746"/>
-<vertex x="-0.9235" y="1.182"/>
-<vertex x="-1.182" y="0.9235"/>
-<vertex x="-0.8746" y="0.5465" curve="19.000773"/>
-<vertex x="-1.0049" y="0.232"/>
-<vertex x="-1.4888" y="0.1828"/>
-<vertex x="-1.4888" y="-0.1828"/>
-<vertex x="-1.0049" y="-0.232" curve="19.000773"/>
-<vertex x="-0.8746" y="-0.5465"/>
-<vertex x="-1.182" y="-0.9235"/>
-<vertex x="-0.9235" y="-1.182"/>
-<vertex x="-0.5465" y="-0.8746" curve="9.498218"/>
-<vertex x="-0.3947" y="-0.9528"/>
-<vertex x="-0.1794" y="-0.4331" curve="-67.514699"/>
-<vertex x="-0.4688" y="0" curve="-247.473915"/>
-<vertex x="0.1794" y="-0.4331"/>
-</polygon>
-</package>
-</packages>
-</library>
 <library name="SparkFun-Resistors">
 <description>&lt;h3&gt;SparkFun Electronics' preferred foot prints&lt;/h3&gt;
 In this library you'll find resistors, capacitors, inductors, test points, jumper pads, etc.&lt;br&gt;&lt;br&gt;
@@ -752,13 +706,12 @@ design rules under a new name.</description>
 </autorouter>
 <elements>
 <element name="ARDUINO" library="jalf" package="ARDUINO_PRO_MINI" value="" x="13.335" y="20.32"/>
-<element name="5V" library="jalf" package="1X02" value="DCPINHD-1X2" x="8.482909375" y="38.8161625" rot="R180"/>
-<element name="RF" library="jalf" package="1X05" value="" x="19.685" y="38.735"/>
+<element name="5V" library="jalf" package="1X02" value="DCPINHD-1X2" x="24.6838375" y="36.422909375" rot="R270"/>
+<element name="RF" library="jalf" package="1X05" value="" x="13.335" y="38.735"/>
 <element name="U$2" library="jalf" package="1X08" value="LEFTPINHD-1X8" x="2.54" y="15.24" rot="R90"/>
 <element name="U$1" library="jalf" package="1X12" value="RIGHTPINHD-1X12" x="24.13" y="15.875" rot="R90"/>
 <element name="-" library="jalf" package="1X04" value="M04PTH" x="1.905" y="1.905"/>
 <element name="+" library="jalf" package="1X04" value="M04PTH" x="20.32" y="1.905" rot="R180"/>
-<element name="U$3" library="SparkFun-Aesthetics" package="OSHW-LOGO-S" value="" x="24.48961875" y="33.930675"/>
 <element name="PROGRAM" library="jalf" package="PUSHBUTTON" value="PUSHBUTTON" x="2.11915625" y="30.69769375" rot="R90"/>
 <element name="R1" library="SparkFun-Resistors" package="AXIAL-0.1" value="1k" x="2.54" y="38.1" rot="R270"/>
 </elements>
@@ -775,11 +728,11 @@ design rules under a new name.</description>
 <contactref element="PROGRAM" pad="P$1"/>
 <wire x1="1.905" y1="1.905" x2="4.445" y2="1.905" width="0.4064" layer="16"/>
 <wire x1="4.445" y1="1.905" x2="6.985" y2="1.905" width="0.4064" layer="16"/>
-<wire x1="22.225" y1="38.735" x2="22.225" y2="30.48" width="0.4064" layer="16"/>
-<wire x1="22.225" y1="30.48" x2="20.955" y2="30.48" width="0.4064" layer="16"/>
+<wire x1="15.875" y1="38.735" x2="22.225" y2="30.48" width="0" layer="19" extent="1-16"/>
+<wire x1="22.225" y1="30.48" x2="20.955" y2="30.48" width="0" layer="19" extent="1-16"/>
 <wire x1="6.985" y1="1.905" x2="9.525" y2="1.905" width="0.4064" layer="16"/>
-<wire x1="7.212909375" y1="38.8161625" x2="22.225" y2="38.735" width="0" layer="19" extent="1-1"/>
-<wire x1="2.10835" y1="27.4761" x2="7.212909375" y2="38.8161625" width="0" layer="19" extent="1-1"/>
+<wire x1="24.6838375" y1="35.152909375" x2="15.875" y2="38.735" width="0" layer="19" extent="1-1"/>
+<wire x1="2.10835" y1="27.4761" x2="24.6838375" y2="35.152909375" width="0" layer="19" extent="1-1"/>
 <wire x1="5.715" y1="25.4" x2="2.10835" y2="27.4761" width="0" layer="19" extent="1-1"/>
 <wire x1="6.985" y1="1.905" x2="5.715" y2="25.4" width="0" layer="19" extent="1-1"/>
 </signal>
@@ -795,15 +748,13 @@ design rules under a new name.</description>
 <wire x1="20.32" y1="1.905" x2="17.78" y2="1.905" width="0.4064" layer="16"/>
 <wire x1="17.78" y1="1.905" x2="15.24" y2="1.905" width="0.4064" layer="16"/>
 <wire x1="15.24" y1="1.905" x2="12.7" y2="1.905" width="0.4064" layer="16"/>
-<wire x1="9.752909375" y1="38.8161625" x2="11.576746875" y2="40.64" width="0.4064" layer="16"/>
-<wire x1="11.576746875" y1="40.64" x2="24.13" y2="40.64" width="0.4064" layer="16"/>
-<wire x1="24.13" y1="40.64" x2="24.765" y2="40.005" width="0.4064" layer="16"/>
-<wire x1="24.765" y1="40.005" x2="24.765" y2="38.735" width="0.4064" layer="16"/>
-<wire x1="9.752909375" y1="38.8161625" x2="7.929071875" y2="40.64" width="0.4064" layer="16"/>
-<wire x1="7.929071875" y1="40.64" x2="3.81" y2="40.64" width="0.4064" layer="16"/>
-<wire x1="3.81" y1="40.64" x2="2.54" y2="39.37" width="0.4064" layer="16"/>
-<wire x1="2.54" y1="39.37" x2="2.54" y2="38.1" width="0.4064" layer="16"/>
-<wire x1="24.765" y1="38.735" x2="20.955" y2="25.4" width="0" layer="19" extent="1-1"/>
+<wire x1="2.54" y1="38.1" x2="5.08" y2="40.64" width="0.4064" layer="16"/>
+<wire x1="5.08" y1="40.64" x2="18.415" y2="40.64" width="0.4064" layer="16"/>
+<wire x1="18.415" y1="40.64" x2="22.86" y2="40.64" width="0.4064" layer="16"/>
+<wire x1="22.86" y1="40.64" x2="24.6838375" y2="38.8161625" width="0.4064" layer="16"/>
+<wire x1="24.6838375" y1="38.8161625" x2="24.6838375" y2="37.692909375" width="0.4064" layer="16"/>
+<wire x1="18.415" y1="38.735" x2="18.415" y2="40.64" width="0.4064" layer="16"/>
+<wire x1="24.6838375" y1="37.692909375" x2="20.955" y2="25.4" width="0" layer="19" extent="1-1"/>
 <wire x1="20.32" y1="1.905" x2="20.955" y2="25.4" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$22">
@@ -864,12 +815,7 @@ design rules under a new name.</description>
 <signal name="N$11">
 <contactref element="ARDUINO" pad="A5"/>
 <contactref element="U$1" pad="A5"/>
-<wire x1="18.0975" y1="24.28875" x2="19.05" y2="25.24125" width="0.4064" layer="16"/>
-<wire x1="19.05" y1="25.24125" x2="19.05" y2="27.94" width="0.4064" layer="16"/>
-<wire x1="19.05" y1="27.94" x2="20.32" y2="29.21" width="0.4064" layer="16"/>
-<wire x1="20.32" y1="29.21" x2="22.86" y2="29.21" width="0.4064" layer="16"/>
-<wire x1="22.86" y1="29.21" x2="23.495" y2="29.845" width="0.4064" layer="16"/>
-<wire x1="23.495" y1="29.845" x2="24.13" y2="29.845" width="0.4064" layer="16"/>
+<wire x1="18.0975" y1="24.28875" x2="24.13" y2="29.845" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$12">
 <contactref element="ARDUINO" pad="A4"/>
@@ -879,13 +825,17 @@ design rules under a new name.</description>
 <signal name="N$13">
 <contactref element="RF" pad="RX"/>
 <contactref element="ARDUINO" pad="1"/>
-<wire x1="5.715" y1="33.02" x2="19.685" y2="38.735" width="0" layer="19" extent="1-1"/>
+<wire x1="13.335" y1="38.735" x2="7.62" y2="33.02" width="0.4064" layer="16"/>
+<wire x1="7.62" y1="33.02" x2="5.715" y2="33.02" width="0.4064" layer="16"/>
 </signal>
 <signal name="N$14">
 <contactref element="ARDUINO" pad="2"/>
 <contactref element="RF" pad="TX"/>
-<wire x1="17.145" y1="38.735" x2="8.89" y2="30.48" width="0" layer="19" extent="1-16"/>
-<wire x1="8.89" y1="30.48" x2="5.715" y2="30.48" width="0" layer="19" extent="1-16"/>
+<wire x1="10.795" y1="38.735" x2="7.62" y2="35.56" width="0.4064" layer="16"/>
+<wire x1="7.62" y1="35.56" x2="4.445" y2="35.56" width="0.4064" layer="16"/>
+<wire x1="4.445" y1="35.56" x2="3.81" y2="34.925" width="0.4064" layer="16"/>
+<wire x1="3.81" y1="34.925" x2="3.81" y2="32.385" width="0.4064" layer="16"/>
+<wire x1="3.81" y1="32.385" x2="5.715" y2="30.48" width="0.4064" layer="16"/>
 </signal>
 <signal name="N$15">
 <contactref element="U$2" pad="9"/>
@@ -926,101 +876,13 @@ design rules under a new name.</description>
 <contactref element="PROGRAM" pad="P$2"/>
 <contactref element="ARDUINO" pad="5"/>
 <contactref element="R1" pad="P$2"/>
-<wire x1="2.137284375" y1="32.92183125" x2="2.54" y2="35.56" width="0" layer="19" extent="1-1"/>
-<wire x1="5.715" y1="22.86" x2="2.137284375" y2="32.92183125" width="0" layer="19" extent="1-1"/>
+<wire x1="2.137284375" y1="32.92183125" x2="2.54" y2="32.92183125" width="0.4064" layer="16"/>
+<wire x1="2.54" y1="32.92183125" x2="2.54" y2="35.56" width="0.4064" layer="16"/>
+<wire x1="2.137284375" y1="32.92183125" x2="0.635" y2="31.419546875" width="0.4064" layer="16"/>
+<wire x1="0.635" y1="31.419546875" x2="0.635" y2="22.86" width="0.4064" layer="16"/>
+<wire x1="0.635" y1="22.86" x2="5.715" y2="22.86" width="0.4064" layer="16"/>
 </signal>
 </signals>
-<errors>
-<approved hash="4,1,3e9df730136b3dc2"/>
-<approved hash="4,1,241b1bf04e083195"/>
-<approved hash="4,1,641f1bc4e33c5492"/>
-<approved hash="4,1,641f1bd77c2ffb91"/>
-<approved hash="4,1,226d73c7179d3e33"/>
-<approved hash="4,1,249f1bab1713e3d1"/>
-<approved hash="4,1,e49f1bbfb00b16d1"/>
-<approved hash="4,1,2c9f1b83c53ebdd0"/>
-<approved hash="4,1,370ac73dc52731f7"/>
-<approved hash="4,1,b6fbaed9196042f0"/>
-<approved hash="4,1,c8fe92db257e00fd"/>
-<approved hash="4,1,fd659349244c3506"/>
-<approved hash="4,1,d03090b726fe1fcb"/>
-<approved hash="4,1,c49792c926e80c54"/>
-<approved hash="4,1,829496cf26ee4e57"/>
-<approved hash="4,1,9e2d90b926fc59ce"/>
-<approved hash="4,1,6dc6904b248ea5a5"/>
-<approved hash="4,1,afc99079288c6ba2"/>
-<approved hash="4,1,e1cc907f257e29af"/>
-<approved hash="4,1,bb62974b207e7719"/>
-<approved hash="4,1,795f93592478b11c"/>
-<approved hash="4,16,c9d3edd679013b61"/>
-<approved hash="4,16,9c702793feb2103a"/>
-<approved hash="4,16,92c4e34c7b4b0a0e"/>
-<approved hash="4,16,370ac73dc52731f7"/>
-<approved hash="4,16,313f330598fd1633"/>
-<approved hash="4,16,6f38fd3bc65c3fbf"/>
-<approved hash="4,16,86c91916d832429a"/>
-<approved hash="4,16,b379ae6c82ece536"/>
-<approved hash="4,16,4e6b53696c747a86"/>
-<approved hash="4,16,436f236d6c327bc0"/>
-<approved hash="4,16,3e9df730136b3dc2"/>
-<approved hash="4,16,241b1bf04e083195"/>
-<approved hash="4,16,641f1bc4e33c5492"/>
-<approved hash="4,16,641f1bd77c2ffb91"/>
-<approved hash="4,16,226d73c7179d3e33"/>
-<approved hash="4,16,249f1bab1713e3d1"/>
-<approved hash="4,16,e49f1bbfb00b16d1"/>
-<approved hash="4,16,2c9f1b83c53ebdd0"/>
-<approved hash="4,16,7ec4ed8611c08f95"/>
-<approved hash="4,16,4bad9fdee7e7a98f"/>
-<approved hash="4,16,f1a7b14d49acc904"/>
-<approved hash="5,16,d42ae1c9e1bdd886"/>
-<approved hash="5,16,d3cd8228ccf7b864"/>
-<approved hash="5,16,922de1883fecbc33"/>
-<approved hash="5,16,10da9f4920d35f3a"/>
-<approved hash="5,16,579403d483c3178e"/>
-<approved hash="5,16,159483dc83ca5589"/>
-<approved hash="5,16,5baa87e50ff3abb0"/>
-<approved hash="5,16,ad9207da1fcb9d89"/>
-<approved hash="5,16,2c9a4a6ec7b27936"/>
-<approved hash="5,16,8a70512d5392cb4c"/>
-<approved hash="5,16,15c37ad1b3af3784"/>
-<approved hash="5,16,4d56ed1aac9bf0be"/>
-<approved hash="5,16,bfb524c1ff2bbc2f"/>
-<approved hash="5,16,ef36750bbdc1ca0f"/>
-<approved hash="5,16,7617adaaae1b31d7"/>
-<approved hash="5,16,e5e3f54cf942ed7e"/>
-<approved hash="4,16,70af2d7d079ebdb6"/>
-<approved hash="5,16,d42e98cd98b2d981"/>
-<approved hash="5,16,d757aaffcbd7ed81"/>
-<approved hash="5,16,581b6d1a6eb7558e"/>
-<approved hash="4,16,c49792c926e80c54"/>
-<approved hash="5,16,59ed6d2c6db35502"/>
-<approved hash="4,16,c8fe92db257e00fd"/>
-<approved hash="5,16,58bf6cde6cb35702"/>
-<approved hash="4,16,fd659349244c3506"/>
-<approved hash="5,16,5bed6d8c6c3f5786"/>
-<approved hash="4,16,e1cc907f257e29af"/>
-<approved hash="5,16,542f6ece6e335882"/>
-<approved hash="4,16,9e2d90b926fc59ce"/>
-<approved hash="5,16,58ab6caa6c37571e"/>
-<approved hash="4,16,795f93592478b11c"/>
-<approved hash="5,16,58256ed46e3754be"/>
-<approved hash="4,16,d03090b726fe1fcb"/>
-<approved hash="5,16,5c1d691c6eaf5186"/>
-<approved hash="4,16,829496cf26ee4e57"/>
-<approved hash="5,16,65eb512a51bf6906"/>
-<approved hash="4,16,b6fbaed9196042f0"/>
-<approved hash="5,16,5bfd6d9c6c335782"/>
-<approved hash="4,16,6dc6904b248ea5a5"/>
-<approved hash="5,16,5ca568d468335702"/>
-<approved hash="4,16,bb62974b207e7719"/>
-<approved hash="5,16,5be7619660335782"/>
-<approved hash="4,16,afc99079288c6ba2"/>
-<approved hash="4,16,8f6363238a79784f"/>
-<approved hash="4,16,1883a36106bde3a9"/>
-<approved hash="4,16,72e9287100683567"/>
-<approved hash="4,16,bbeae98287aa748f"/>
-</errors>
 </board>
 </drawing>
 </eagle>

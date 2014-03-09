@@ -262,9 +262,9 @@ We've spent an enormous amount of time creating and checking these footprints an
 <rectangle x1="4.826" y1="-0.254" x2="5.334" y2="0.254" layer="51"/>
 <text x="-5.705959375" y="1.548165625" size="0.8128" layer="21">con</text>
 <text x="-3.31063125" y="1.62179375" size="0.8128" layer="21">TX</text>
-<text x="-0.64404375" y="1.5391" size="0.6096" layer="21" rot="SR0">RX</text>
-<text x="2.022546875" y="1.5391" size="0.8128" layer="21" rot="SR0">gnd</text>
-<text x="4.40883125" y="1.557225" size="0.8128" layer="21" rot="SR0">Vcc</text>
+<text x="-0.64404375" y="1.5391" size="0.8128" layer="21" rot="SR0">RX</text>
+<text x="2.022546875" y="1.5391" size="0.8128" layer="21" rot="SR0">-</text>
+<text x="4.40883125" y="1.557225" size="0.8128" layer="21" rot="SR0">+</text>
 </package>
 <package name="1X08">
 <description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
@@ -918,10 +918,10 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <junction x="-73.66" y="71.12"/>
 </segment>
 <segment>
-<pinref part="RF" gate="A" pin="5"/>
 <pinref part="SUPPLY3" gate="G$1" pin="5V"/>
-<wire x1="-5.08" y1="93.98" x2="-2.54" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="-2.54" y1="93.98" x2="-2.54" y2="99.06" width="0.1524" layer="91"/>
+<pinref part="RF" gate="A" pin="5"/>
+<wire x1="-2.54" y1="99.06" x2="-5.08" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="-5.08" y1="99.06" x2="-5.08" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$22" class="0">

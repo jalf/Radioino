@@ -548,13 +548,13 @@ We've spent an enormous amount of time creating and checking these footprints an
 <rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
 </package>
 <package name="PUSHBUTTON">
-<pad name="P$2" x="-33.02845625" y="1.910046875" drill="0.8" rot="R90"/>
-<pad name="P$1" x="-35.546771875" y="1.885059375" drill="0.8" rot="R90"/>
-<wire x1="-37.5" y1="5" x2="-31" y2="5" width="0.127" layer="21"/>
-<wire x1="-31" y1="5" x2="-31" y2="-1.5" width="0.127" layer="21"/>
-<wire x1="-31" y1="-1.5" x2="-37.5" y2="-1.5" width="0.127" layer="21"/>
-<wire x1="-37.5" y1="-1.5" x2="-37.5" y2="-1" width="0.127" layer="21"/>
-<wire x1="-37.5" y1="-1" x2="-37.5" y2="5" width="0.127" layer="21"/>
+<pad name="P$2" x="1.676115625" y="0.025815625" drill="0.8" rot="R90"/>
+<pad name="P$1" x="-2.72159375" y="0.01080625" drill="0.8" rot="R90"/>
+<wire x1="-3.5" y1="0" x2="-3.5" y2="3" width="0.127" layer="21"/>
+<wire x1="-3.5" y1="3" x2="2.5" y2="3" width="0.127" layer="21"/>
+<wire x1="2.5" y1="3" x2="2.5" y2="-3" width="0.127" layer="21"/>
+<wire x1="2.5" y1="-3" x2="-3.5" y2="-3" width="0.127" layer="21"/>
+<wire x1="-3.5" y1="-3" x2="-3.5" y2="0" width="0.127" layer="21"/>
 </package>
 </packages>
 <symbols>
@@ -1149,10 +1149,6 @@ Standard 4-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <pinref part="ARDUINO" gate="G$1" pin="2"/>
 <wire x1="-2.54" y1="66.04" x2="-15.24" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="-15.24" y1="66.04" x2="-15.24" y2="83.82" width="0.1524" layer="91"/>
-<wire x1="-15.24" y1="83.82" x2="2.54" y2="83.82" width="0.1524" layer="91"/>
-<pinref part="PROGRAM" gate="G$1" pin="P$1"/>
-<wire x1="2.54" y1="83.82" x2="5.08" y2="83.82" width="0.1524" layer="91"/>
-<wire x1="5.08" y1="83.82" x2="5.08" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
