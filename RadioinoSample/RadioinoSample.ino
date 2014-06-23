@@ -16,9 +16,9 @@
 
 #include <radioino.h>
 
-byte inputPins[] = {4,9,10,11,12};  // Digital INPUT pins (first byte is the ports count)
-byte outputPins[] = {6,3,4,5,6,8,13};  // Digital OUTPUT pins (first byte is the ports count)
-byte analogInputPins[] = {4,0,1,2,3 };  // Analogic INPUT pins (first byte is the ports count)
+byte inputPins[] = {4,2,3,4,5};  // Digital INPUT pins (first byte is the ports count)
+byte outputPins[] = {4,6,7,8,9,10};  // Digital OUTPUT pins (first byte is the ports count)
+byte analogInputPins[] = {4,4,5,6,7 };  // Analogic INPUT pins (first byte is the ports count)
 
 // Initialize the module
 Radioino module(inputPins,       // Module input pins

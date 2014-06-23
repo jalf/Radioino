@@ -63,6 +63,7 @@ byte Radioino::receiveCommand()
 		_setupMode = true;
 		_previousTime = 0;
 		_setupModeCount = 0;
+		setActivityLedState(LOW);
 	}
 	if (_setupMode)
 	{
@@ -74,8 +75,13 @@ byte Radioino::receiveCommand()
 		if(currentTime - _previousTime > RADIOINO_SETUP_LED_BLINK_MS) {
 			// save the last time you blinked the LED 
 			_previousTime = currentTime;   
-			setActivityLedState(!_activityLedState);
-			_setupModeCount++;
+			_setupModeCount++;			
+			
+			// if the LED is off turn it on and vice-versa:
+			if (_activityLedState == LOW)
+				setActivityLedState(HIGH);
+			else
+				setActivityLedState(LOW);
 		}
 		
 		// Exit the setup mode
@@ -108,7 +114,8 @@ byte Radioino::receiveCommand()
 		}
 	}
 	// end activity
-	setActivityLedState(LOW);  
+	if (!_setupMode)
+		setActivityLedState(LOW);  
 	
 	return _commandResult;
 }
@@ -203,7 +210,8 @@ boolean Radioino::receive()
 	{    
 		int value = Serial.read();
 		// show activity
-		setActivityLedState(!_activityLedState);
+		if (!_setupMode)
+			setActivityLedState(!_activityLedState);
 		switch (value)
 		{
 			case RADIOINO_COMMAND_END	:

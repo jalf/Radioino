@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <arduino.h>
 
 #define RADIOINO_ACTIVIY_LED_PIN	13
-#define RADIOINO_SETUP_BUTTON_PIN	2	
-#define RADIOINO_SETUP_LED_BLINK_MS	300	
+#define RADIOINO_SETUP_BUTTON_PIN	12	
+#define RADIOINO_SETUP_LED_BLINK_MS	500	
 #define RADIOINO_SETUP_ATTEMPTS		100	
 #define RADIOINO_SETUP_HEADER		"R----"
 #define RADIOINO_COMMAND_END		'\n'
