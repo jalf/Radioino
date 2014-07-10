@@ -1,5 +1,5 @@
 /*
-RaduioIno
+RadioIno
 A wireless-friendly arduino
 By Jalf - 2014
 
@@ -49,16 +49,18 @@ class Radioino
 		
 		void sendResponse();
 		void send(String data);		
+		void send(char data);		
 		byte receiveCommand();
 		byte getCommandResult();
 		void setActiviyLedPin(byte pin);			
 		void write(byte pin, boolean value);
 		boolean read(byte pin);
+		void setCustomCommandCallback(boolean (*customCommandCallBack)(char,int));
 	private:
 		byte _commandResult;
 		boolean _setupMode;		// true if the board is in setup mode
 		byte _setupModeCount;	// Actual setup mode try count
-		unsigned long _previousTime; // previous miliseconds
+		unsigned long _previousTime; // previous milliseconds
 		byte _activityLedPin;	// Led for activity
 		boolean _activityLedState;	// True if the led is on
 		byte _setupButtonPin;	// Pin with the setup button
@@ -73,10 +75,13 @@ class Radioino
 		String _startHeader; // Module address in message header
 		
 		String _response;	// response string
+		String _customResponse;	// custom-data response string
 		String _command;  // Incoming command
 		String _value; // Command parameter
 		int _commandCharIndex;  // Actual command token
 		int _commandSize;  // Command size in bytes
+		
+		boolean (*_customCommandCallBack)(char,int);  // Custom command callback
 
 		void sendSensorsStatus();		
 		boolean execute();
@@ -91,7 +96,7 @@ class Radioino
 		void toneNotify(int pin);		
 		void sendHeader();
 		int getNextInt();
-		String getCheckSum(String value);
+		String getCheckSum(String value);		
 };
 
 #endif

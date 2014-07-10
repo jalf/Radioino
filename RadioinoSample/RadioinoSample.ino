@@ -17,7 +17,7 @@
 #include <radioino.h>
 
 byte inputPins[] = {4,2,3,4,5};  // Digital INPUT pins (first byte is the ports count)
-byte outputPins[] = {4,6,7,8,9,10};  // Digital OUTPUT pins (first byte is the ports count)
+byte outputPins[] = {4,6,7,8,9};  // Digital OUTPUT pins (first byte is the ports count)
 byte analogInputPins[] = {4,4,5,6,7 };  // Analogic INPUT pins (first byte is the ports count)
 
 // Initialize the module
@@ -35,8 +35,28 @@ void setup()
   }
 }
 
+// Custom command handler
+boolean customCommandCallBack(char command, int param)
+{
+  // something like 'R0004H6Z1'
+  if (command=='Z')
+  {
+    if (param == 0)
+      module.send("ZDISABLED");
+    else module.send("ZENABLED");
+    
+    // Command accepted
+    return true;
+  }  
+  // Command not recognized. Error
+  return false;
+}
+
 void loop()
 {
+  // Configure the custom command handler
+  module.setCustomCommandCallback(customCommandCallBack);
+  
   if (module.receiveCommand())
   {
     if (module.getCommandResult()==RADIOINO_COMMAND_OK)
@@ -48,3 +68,4 @@ void loop()
     module.sendResponse();
   }
 }
+

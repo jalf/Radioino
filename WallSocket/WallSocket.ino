@@ -5,14 +5,14 @@
 Outlet power Main Module
  */
 
-byte inputPins[] = {5,8,9,10,11,12};  // Digital INPUT pins
-byte outputPins[] = {5,3,4,5,6,7};  // Digital OUTPUT pins
-byte analogInputPins[] = {4,0,1,2,3 };  // Analogic INPUT pins
+byte inputPins[] = {4,2,3,4,5};  // Digital INPUT pins (first byte is the ports count)
+byte outputPins[] = {4,6,7,8,9};  // Digital OUTPUT pins (first byte is the ports count)
+byte analogInputPins[] = {4,4,5,6,7 };  // Analogic INPUT pins (first byte is the ports count)
 
-int relay1Pin = 3;
-int relay2Pin = 4;
-int PIRpin = 9;
-int dhtPin = 10;
+int relay1Pin = 6;
+int relay2Pin = 7;
+int PIRpin = 2;
+int dhtPin = 3;
 boolean PIRdectected = false;
 
 // Temperature Sensor

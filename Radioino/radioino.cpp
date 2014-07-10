@@ -24,16 +24,21 @@ Radioino::Radioino(byte inputPins[], byte outputPins[], byte analogInputPins[])
 		_outputPins[i].number = outputPins[i+1]; // The first by is the count
 	}
 	
-	_analogInputPins = analogInputPins+sizeof(byte);
-	
+	_analogInputPins = analogInputPins+sizeof(byte);	
 	
   // Alloc strings
   _command.reserve(50);
   _response.reserve(255);
+  _customResponse.reserve(255);
   _value.reserve(3);
 
   // Set the pin configuration
   setupPins();
+}
+
+void Radioino::setCustomCommandCallback(boolean (*customCommandCallBack)(char,int))
+{
+	_customCommandCallBack = customCommandCallBack;
 }
 
 // Set the module address
@@ -96,12 +101,13 @@ byte Radioino::receiveCommand()
 	_commandResult = RADIOINO_NO_COMMAND;
 	if (Serial.available() > 0) {
 		if (receive()) {
+			_customResponse = "";
 			if (execute())
 			{
 				// Build the response message
 				beginResponse(true);
 				// Add the sensors status
-				sendSensorsStatus();   
+				send(getInputSensorsStatus());
 				_commandResult = RADIOINO_COMMAND_OK;
 			}
 			else {
@@ -249,6 +255,8 @@ boolean Radioino::execute()
 {
 	String tempAddress = "0000";
 	int inByte;
+	char customCommand;
+	
 	_commandCharIndex = 5; // just after command header
 	_commandSize = _command.length();
 	while (_commandCharIndex < _commandSize) {            
@@ -263,11 +271,11 @@ boolean Radioino::execute()
 			_commandCharIndex++;
 			// Get the param
 			inByte = getNextInt();        
-			write(inByte,LOW);
+			write(inByte,LOW);
 			break;
 		case 'S'  :    // Set the module address
 			_commandCharIndex++;
-			// we need more 4 characteres in setup mode
+			// we need more 4 characters in setup mode
 			if (!_setupMode || (_commandSize - _commandCharIndex <4))
 				return false;
 			// Set the new address			
@@ -285,14 +293,17 @@ boolean Radioino::execute()
 				write(inByte,HIGH);
 			else write(inByte,LOW);
 			break;
-		case 'T'  :		// Play the module Tone
-			_commandCharIndex++;
-			// Get the param
-			inByte = getNextInt();  
-			toneNotify(inByte);
-			break;    		
-		default:     
-			return false;
+		default:   
+			// Custom command
+			if (_customCommandCallBack != NULL)
+			{
+				customCommand = _command.charAt(_commandCharIndex);
+				_commandCharIndex++;   
+				inByte = getNextInt();    
+				if  (!_customCommandCallBack(customCommand,inByte))
+					return false;
+			}
+			else return false;
 		}
 	}    	
 	
@@ -307,12 +318,19 @@ boolean Radioino::execute()
 
 void Radioino::send(String data)
 {
-	_response+=data;
-	_response+=RADIOINO_SECTION;	
+	_customResponse+=data;
+	_customResponse+=RADIOINO_SECTION;	
+}
+
+void Radioino::send(char data)
+{
+	_customResponse+=data;
+	_customResponse+=RADIOINO_SECTION;	
 }
 
 void Radioino::sendResponse()
 {
+	_response += _customResponse;
 	_response += ("CRC" + getCheckSum(_response));
 	Serial.println(_response);
 }
@@ -346,16 +364,10 @@ int Radioino::getNextInt()
   return _value.toInt();
 }
 
-void Radioino::sendSensorsStatus()
-{
-	send(getInputSensorsStatus());
-}
-
 String Radioino::getInputSensorsStatus()
 {
 	String result ="IND";
 	int value;
-
 	// Add the input digital pins
 	for (int i=0;i<_inputPinsCount;i++)
 	{
@@ -379,14 +391,6 @@ String Radioino::getInputSensorsStatus()
 	}  
 
   return result;
-}
-
-// play the notify tone
-void Radioino::toneNotify(int pin)
-{
-  tone(pin,494,50); //SI
-  delay(80);
-  tone(pin,700,100); 
 }
 
 // Calculates the checksum for a given string
