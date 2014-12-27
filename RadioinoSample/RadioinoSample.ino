@@ -13,15 +13,14 @@
  https://github.com/jalf/Radioino
 
 */
-
-#include <radioino.h>
+#include <iotoaster.h>
 
 byte inputPins[] = {4,2,3,4,5};  // Digital INPUT pins (first byte is the ports count)
 byte outputPins[] = {4,6,7,8,9};  // Digital OUTPUT pins (first byte is the ports count)
 byte analogInputPins[] = {4,4,5,6,7 };  // Analogic INPUT pins (first byte is the ports count)
 
 // Initialize the module
-Radioino module(inputPins,       // Module input pins
+IOToaster module(inputPins,      // Module input pins
                 outputPins,      // Module output pins     
                 analogInputPins  // Module analog input pins
 );
@@ -29,7 +28,7 @@ Radioino module(inputPins,       // Module input pins
 void setup()
 {
   // start serial port at 9600 bps and wait for port to open:
-  Serial.begin(9600);
+  module.setup();
 }
 
 // Custom command handler
@@ -56,7 +55,7 @@ void loop()
   
   if (module.receiveCommand())
   {
-    if (module.getCommandResult()==RADIOINO_COMMAND_OK)
+    if (module.getCommandResult()==IOTOASTER_COMMAND_OK)
     {
       // Send custom data
       module.send("my stuff here");
