@@ -47,21 +47,33 @@ void IOToaster::setup()
 		
 	else {
 		// Setup mode
-		_setupMode = true;
 		setActivityLedState(LOW);
+		_setupMode = true;		
+		createServer();
 	}
+}
 
+void IOToaster::createServer()
+{
+	Serial.print("AT+CWMODE=2\r\n"); // AP Mode
+	Serial.print("AT+CWSAP=\"iotoaster\",\"\",1,0\r\n"); // Create AP
+	delay(500);
+	Serial.print("AT+CIPMUX=1\r\n"); // Enable Multiple connections
+	delay(500);
+	Serial.print("AT+CIPSERVER=1,80"); // Start the server
+	delay(1000);
 }
 
 void IOToaster::connectServer()
 {
-	Serial.print("AT+CIPMUX=1\r\n");
-	delay(1000);
+	Serial.print("AT+CIPMUX=0\r\n");
+	delay(500);
 	Serial.print("AT+CIPSTART=0,\"TCP\",\"");
 	Serial.print(_serverIp);
 	Serial.print("\",");
 	Serial.print(_serverPort);
 	Serial.print("\r\n");
+	delay(1000);
 }
 
 void IOToaster::setCustomCommandCallback(boolean(*customCommandCallBack)(char, int))
@@ -221,7 +233,6 @@ boolean IOToaster::execute()
 			// Get the param
 			inByte = getNextInt();
 			write(inByte, LOW);
-
 			break;
 		case 'X':    // invert a digital output
 			_commandCharIndex++;
@@ -260,6 +271,22 @@ void IOToaster::send(char data)
 	_customResponse += IOTOASTER_SECTION;
 }
 
+boolean IOToaster::waitForSerial(char *data)
+{
+	int count = IOTOASTER_RETRY_SERIAL;
+	while (count > 0)
+	{
+		if (Serial.find(data))
+		{
+			return true;
+		}
+		else {
+			delay(100);
+			count--;
+		}
+	}
+}
+
 boolean IOToaster::sendResponse()
 {
 	_response += _customResponse;
@@ -268,9 +295,11 @@ boolean IOToaster::sendResponse()
 	Serial.print("AT+CIPSEND=0,");
 	Serial.print(_response.length());
 	Serial.print("\r\n");
-	Serial.print(_response);
-	delay(1000);
-	return (Serial.find("OK"));
+	if (waitForSerial(">")){        // wait for > to send data.
+		Serial.print(_response);
+		return (waitForSerial("OK"));
+	}
+	else return false;
 }
 
 void IOToaster::beginResponse(boolean result)
@@ -335,7 +364,7 @@ String IOToaster::getCheckSum(String value) {
 	int XOR;
 	int c;
 	int valueSize = value.length();
-	// Calculate checksum ignoring any $'s in the string
+	// Calculate checksum
 	for (XOR = 0, i = 0; i < valueSize; i++) {
 		c = (unsigned char)value[i];
 		XOR ^= c;
@@ -343,7 +372,7 @@ String IOToaster::getCheckSum(String value) {
 	return String(XOR, HEX);
 }
 
-// Soft-reset module
+// Soft-reset wifi module
 boolean IOToaster::reset()
 {
 	Serial.print("AT+RST\r\n");

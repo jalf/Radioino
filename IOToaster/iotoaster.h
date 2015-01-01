@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define IOTOASTER_NO_COMMAND			0
 #define IOTOASTER_LED_PIN				13
 #define IOTOASTER_SETUP_LED_BLINK_MS	500
+#define IOTOASTER_RETRY_SERIAL			10
 
 
 class IOToaster
@@ -84,6 +85,8 @@ private:
 	void setupPins();
 	void resetCommand();
 	void connectServer();
+	boolean waitForSerial(char *data); // Wait for a serial response
+	void createServer();  // Enter in AP mode and create the server for configuration
 
 	boolean(*_customCommandCallBack)(char, int);  // Custom command callback
 	int getNextInt();	// Get the next int-value from the incoming command
